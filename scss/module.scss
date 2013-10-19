@@ -41,7 +41,8 @@ $nav-height: 40px;
 }
 
 .box-wrapper {
-  display: inline-block;  
+  display: inline-block;
+  margin-bottom: 25px;
 }
 
 .box {
@@ -50,4 +51,17 @@ $nav-height: 40px;
   background: white;
   border: 1px solid #ccc;
   min-height: 300px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.footer {
+  background: white;
+  border-top: 1px solid #bbb;
+  line-height: 30px;
+  height: 30px;
+
+  a {
+    color: black;
+  }
 }

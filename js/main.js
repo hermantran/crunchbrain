@@ -20,15 +20,27 @@ require.config({
 
 require([
   'jquery',
-  'templates'
-], function($, Templates) {
+  'state',
+  'views/projectsLayout'
+], function($, AppState, ProjectsLayoutView) {
   'use strict';
-  var $recentProjects = $('#recent-projects'),
-      $featuredProjects = $('#featured-projects');
+  var $content = $('#content');
 
-  for (var i = 0; i < 3; i++) {
-    $recentProjects.append(Templates.box);
-    $featuredProjects.append(Templates.box);
-  }
+  $content
+    .append(ProjectsLayoutView.el);
+
+  AppState.get('collections').get('recentProjects').add([
+    { title: 'hello', description: 'lorem ipsum' },
+    { title: 'hello2', description: 'lorem ipsum' },
+    { title: 'hello3', description: 'lorem ipsum' },
+    { title: 'another', description: 'lorem ipsum' },
+    { title: 'project', description: 'lorem ipsum' }
+  ]);
+
+  AppState.get('collections').get('featuredProjects').add([
+    { title: 'some', description: 'lorem ipsum' },
+    { title: 'featured', description: 'lorem ipsum' },
+    { title: 'project', description: 'lorem ipsum' }
+  ]);
 });
 
