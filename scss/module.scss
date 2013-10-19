@@ -1,0 +1,53 @@
+$nav-height: 40px;
+
+.nav-wrapper {
+  border-bottom: 1px solid #ddd;
+  background: white;
+}
+
+.navbar {
+  height: $nav-height;
+  line-height: $nav-height;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  
+  > .brand {
+    font-size: 30px;
+    
+    a {
+      color: #222;
+    }
+  }
+  
+  a {
+    margin-left: 10px;
+  }
+  
+  .question {
+    line-height: 17px;
+    font-size: 15px;
+  }
+}
+
+.content-bar {
+  height: 25px;
+  line-height: 25px;
+  margin-bottom: 15px;
+  
+  a {
+    color: #222;
+    margin-left: 10px;
+  }
+}
+
+.box-wrapper {
+  display: inline-block;  
+}
+
+.box {
+  margin: 0 30px;
+  padding: 10px;
+  background: white;
+  border: 1px solid #ccc;
+  min-height: 300px;
+}

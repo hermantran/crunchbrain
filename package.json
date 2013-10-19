@@ -1,0 +1,12 @@
+{
+  "name": "crunchbase",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt-contrib-sass": "~0.5.0",
+    "grunt": "~0.4.1",
+    "grunt-contrib-requirejs": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-jshint": "~0.6.4",
+    "jam": "~0.6.1"
+  }
+}
