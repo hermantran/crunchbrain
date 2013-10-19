@@ -1,9 +1,9 @@
 $base-color: #eee;
 
-@mixin shadow($color) {
-	-moz-box-shadow: 0 0 5px $color;
-  -webkit-box-shadow: 0 0 5px $color;
-  box-shadow: 0 0 5px $color;
+@mixin shadow($color, $size: 5px) {
+  -moz-box-shadow: 0 0 $size $color;
+  -webkit-box-shadow: 0 0 $size $color;
+  box-shadow: 0 0 $size $color;
 }
 
 @import "base";

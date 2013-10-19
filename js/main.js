@@ -20,14 +20,39 @@ require.config({
 
 require([
   'jquery',
+  'backbone',
   'state',
-  'views/projectsLayout'
-], function($, AppState, ProjectsLayoutView) {
+  'router',
+  'views/app',
+  'views/projectsLayout',
+  'views/projectLayout'
+], function($, Backbone, AppState, Router, AppView, ProjectsLayoutView, ProjectLayoutView) {
   'use strict';
-  var $content = $('#content');
+  var client = new WindowsAzure.MobileServiceClient(
+      "https://hackathondata.azure-mobile.net/",
+      "QnBfSOSWkwCVrZwuRCKGqAMXUzuFOb51"
+  );
+
+  var projects = client.getTable("project").read().done(function(results){
+    console.log(results);
+  }, function(err){
+    console.log("error: " + err);
+  });
+
+
+  Backbone.history.start();
+
+  var $content = $('#content'),
+      views = AppState.get('views');
+
+  views.set('projectsLayout', ProjectsLayoutView);
+  views.set('projectLayout', ProjectLayoutView);
 
   $content
-    .append(ProjectsLayoutView.el);
+    .append(ProjectsLayoutView.el)
+    .append(ProjectLayoutView.el);
+
+  Router.navigate('projects');
 
   AppState.get('collections').get('recentProjects').add([
     { title: 'hello', description: 'lorem ipsum' },

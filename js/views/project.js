@@ -1,7 +1,9 @@
 define([
 	"backbone",
+  "state",
+  "router",
 	"templates"
-], function(Backbone, Templates) {
+], function(Backbone, AppState, Router, Templates) {
 	'use strict';
 	var projectView = Backbone.View.extend({
     tagName: 'div',
@@ -9,8 +11,13 @@ define([
     template: Templates.box,
     
     initialize: function() {
-      console.log(this.model);
+      var self = this;
       this.render();
+      this.$el.on('click', '.box', function() {
+        AppState.set('activeProject', self.model);
+        AppState.set('activeView', AppState.get('views').get('projectLayout'));
+        Router.navigate("project/" + self.model.get('title'));
+      });
     },
 
     render: function() {
