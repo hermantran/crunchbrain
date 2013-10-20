@@ -31,13 +31,13 @@ define([
   ];
 
   Templates.project = [
-    '<h3 class="text-center title"> <b> <%= title %> </b> </h3>',
+    '<h3 class="text-center title text-bold is-clickable"><%= title %></h3>',
     '<div class="text-center">By <%= team %></div>',
     '<div class="row">',
       '<div class="col-lg-8">',
         '<b>Pitch</b>',
         '<div class="project-box">',
-          '<p><%= pitch %></p>',
+          '<p class="pitch is-clickable"><%= pitch %></p>',
         '</div>',
         '<b>Project</b>',
         '<div class="project-box">',

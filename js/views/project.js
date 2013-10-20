@@ -13,6 +13,8 @@ define([
     initialize: function() {
       var self = this;
       this.render();
+
+      this.listenTo(this.model, 'change', this.render);
       this.$el.on('click', '.box', function() {
         AppState.set('activeProject', self.model);
         AppState.set('activeView', AppState.get('views').get('projectLayout'));

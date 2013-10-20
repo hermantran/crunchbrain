@@ -3,6 +3,11 @@ define([
   "templates",
   "state",
 ], function(Backbone, Templates, AppState) {
+  var client = new WindowsAzure.MobileServiceClient(
+      "https://hackathondata.azure-mobile.net/",
+      "QnBfSOSWkwCVrZwuRCKGqAMXUzuFOb51"
+    );
+
   var ProjectLayoutView = Backbone.View.extend({
     tagName: "div",
     template: Templates.project,
@@ -10,6 +15,38 @@ define([
     initialize: function() {
       this.render();
       this.listenTo(AppState, 'change:activeProject', this.render);
+      this.$el
+        .on('click', '.title', function() {
+          if (!$(this).hasClass('edit')) {
+            $(this).addClass('edit is-clickable').html('<input type="text" class="input-lg input-title" value="' + AppState.get('activeProject').get('title') + '"></input>');
+          }
+        })
+        .on('keydown', '.input-title', function(e) {
+          if (e.keyCode === 13) {
+            AppState.get('activeProject').set('title', $(this).val());
+            client.getTable("project").update({
+              id: parseInt(AppState.get('activeProject').id, 10),
+              title: $(this).val()
+            });
+            $(this).parent().removeClass('edit is-clickable').html(AppState.get('activeProject').get('title'));
+          }
+        })
+        .on('click', '.pitch', function() {
+          if (!$(this).hasClass('edit')) {
+            $(this).addClass('edit is-clickable').html('<textarea style="width: 100%" rows="6" class="input-pitch">' + AppState.get('activeProject').get('pitch') + '</textarea>');
+          }
+        })
+        .on('keydown', '.input-pitch', function(e) {
+          if (e.keyCode === 13) {
+            e.preventDefault();
+            AppState.get('activeProject').set('pitch', $(this).val());
+            client.getTable("project").update({
+              id: parseInt(AppState.get('activeProject').id, 10),
+              pitch: $(this).val()
+            });
+            $(this).parent().removeClass('edit is-clickable').html(AppState.get('activeProject').get('pitch'));
+          }
+        });
     },
 
     render: function() {
