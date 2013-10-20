@@ -5,11 +5,16 @@ define([
   var Router = Backbone.Router.extend({
     routes: {
       'projects': 'projects',
-      'project/*id': 'project'
+      'project/*id': 'project',
+      'login': 'login'
     },
 
     projects: function() {
       AppState.set('activeView', AppState.get('views').get('projectsLayout'));
+    },
+
+    login: function() {
+      AppState.set('activeView', AppState.get('views').get('loginLayout'));
     },
 
     project: function(id) { 

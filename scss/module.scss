@@ -50,7 +50,7 @@ $nav-height: 40px;
   padding: 10px;
   background: white;
   border: 1px solid #ccc;
-  min-height: 300px;
+  min-height: 350px;
   text-align: left;
   cursor: pointer;
 }
@@ -59,11 +59,12 @@ $nav-height: 40px;
   margin-top: 15px;
   background: white;
   border-top: 1px solid #bbb;
-  line-height: 30px;
-  height: 30px;
+  line-height: 40px;
+  height: 40px;
 
   a {
     color: black;
+    margin-right: 10px;
   }
 }
 

@@ -25,8 +25,9 @@ require([
   'router',
   'views/app',
   'views/projectsLayout',
-  'views/projectLayout'
-], function($, Backbone, AppState, Router, AppView, ProjectsLayoutView, ProjectLayoutView) {
+  'views/projectLayout',
+  'views/loginLayout'
+], function($, Backbone, AppState, Router, AppView, ProjectsLayoutView, ProjectLayoutView, LoginLayoutView) {
   'use strict';
   var client = new WindowsAzure.MobileServiceClient(
       "https://hackathondata.azure-mobile.net/",
@@ -35,6 +36,13 @@ require([
 
   var projects = client.getTable("project").read().done(function(results){
     console.log(results);
+    for (var i = 0; i < results.length; i++) {
+      if (results[i].featured) {
+        AppState.get('collections').get('featuredProjects').add(results[i]);
+      } else {
+        AppState.get('collections').get('recentProjects').add(results[i]);
+      }
+    }
   }, function(err){
     console.log("error: " + err);
   });
@@ -47,13 +55,16 @@ require([
 
   views.set('projectsLayout', ProjectsLayoutView);
   views.set('projectLayout', ProjectLayoutView);
+  views.set('loginLayout', LoginLayoutView);
 
   $content
     .append(ProjectsLayoutView.el)
-    .append(ProjectLayoutView.el);
+    .append(ProjectLayoutView.el)
+    .append(LoginLayoutView.el);
 
-  Router.navigate('projects');
 
+  AppState.set('activeView', ProjectsLayoutView);
+/*
   AppState.get('collections').get('recentProjects').add([
     { title: 'hello', description: 'lorem ipsum' },
     { title: 'hello2', description: 'lorem ipsum' },
@@ -67,5 +78,6 @@ require([
     { title: 'featured', description: 'lorem ipsum' },
     { title: 'project', description: 'lorem ipsum' }
   ]);
+*/
 });
 
