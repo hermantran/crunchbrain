@@ -78,7 +78,7 @@ define([
       '<div class="col-lg-8">',
         '<br>',
         '<div class="project-box text-center">',
-          '<div class="text-center media"><img src="<%= img %>"></div>',
+          '<div class="text-center media" style="border-bottom: 0"><img src="<%= img %>" style="max-height: 400px"></div>',
         '</div>',
         '<b>Contact Me</b>',
         '<div class="project-box">',

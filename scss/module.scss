@@ -63,6 +63,10 @@ $nav-height: 50px;
   cursor: pointer;
 }
 
+.nav {
+  border-top: 3px solid #23AFC2;
+}
+
 .footer {
   background: white;
   border-top: 1px solid #bbb;
@@ -71,7 +75,7 @@ $nav-height: 50px;
 
   a {
     color: black;
-    margin-right: 10px;
+    margin-right: 20px;
   }
 }
 
