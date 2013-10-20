@@ -30,8 +30,9 @@ require([
   'views/loginLayout',
   'views/profilesLayout',
   'views/profileLayout',
-  'views/eventsLayout'
-], function($, Backbone, AppState, Router, Templates, AppView, ProjectsLayoutView, ProjectLayoutView, LoginLayoutView, ProfilesLayoutView, ProfileLayoutView, EventsLayoutView) {
+  'views/eventsLayout',
+  'views/signupLayout'
+], function($, Backbone, AppState, Router, Templates, AppView, ProjectsLayoutView, ProjectLayoutView, LoginLayoutView, ProfilesLayoutView, ProfileLayoutView, EventsLayoutView, SignupLayoutView) {
   'use strict';
   var client = new WindowsAzure.MobileServiceClient(
       "https://hackathondata.azure-mobile.net/",
@@ -66,11 +67,13 @@ require([
   views.set('profilesLayout', ProfilesLayoutView);
   views.set('profileLayout', ProfileLayoutView);
   views.set('eventsLayout', EventsLayoutView);
+  views.set('signupLayout', SignupLayoutView);
 
   $content
     .append(ProjectsLayoutView.el)
     .append(ProjectLayoutView.el)
     .append(LoginLayoutView.el)
+    .append(SignupLayoutView.el)
     .append(ProfilesLayoutView.el)
     .append(ProfileLayoutView.el)
     .append(EventsLayoutView.el);

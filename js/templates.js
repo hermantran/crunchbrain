@@ -73,11 +73,12 @@ define([
 
   Templates.profile = [
     '<h3 class="text-center title"> <b> <%= name %> </b> </h3>',
-    '<div class="text-center">By <%= location %>, CA</div>',
+    '<div class="text-center"><%= location %>, CA</div>',
     '<div class="row">',
       '<div class="col-lg-8">',
+        '<br>',
         '<div class="project-box text-center">',
-          '<img src="<%= img %>" width="75%" style=>',
+          '<div class="text-center media"><img src="<%= img %>"></div>',
         '</div>',
         '<b>Contact Me</b>',
         '<div class="project-box">',
@@ -90,7 +91,7 @@ define([
         '</div>',
         '<b>Created Projects</b>',
         '<div class="project-box">',
-          '<img src="<%= project_img %>" width="100%">',
+          '<div class="text-center media"><img src="<%= project_img %>"></div>',
           '<b>CrunchBrain</b>',
         '</div>',
       '</div>',
@@ -171,6 +172,25 @@ define([
           '<input type="checkbox" value="remember-me"> Remember me',
         '</label>',
         '<button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>',
+      '</form>',
+    '</div>'
+  ];
+
+  Templates.signup = [
+    '<div class="col-lg-4 col-lg-offset-4">',
+      '<div class="text-center">',
+      '<br>',
+      '<img src="img/facebook.png" width="80%">',
+      '<img src="img/google.png" width="80%">',
+      '<h4>Or sign up</h4></div>',
+      '<form class="form-signin">',
+        '<input type="text" class="form-control" placeholder="Name" autofocus>',
+        '<input type="text" class="form-control" placeholder="Location">',
+        '<input type="text" class="form-control" placeholder="Position">',
+        '<input type="text" class="form-control" placeholder="Email address">',
+        '<input type="password" class="form-control" placeholder="Password">',
+        '<input type="password" class="form-control" placeholder="Confirm password">',
+        '<button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>',
       '</form>',
     '</div>'
   ];
