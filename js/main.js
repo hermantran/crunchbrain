@@ -85,8 +85,24 @@ require([
     'description': 'Developer Week LA invites 400+ developers to converge on SantaMonica for a 2-day hackathon, full-day developer conference and a week-long series of events.'
   });
 
+  var startup = Templates.eventBox({
+    'title': "Startup Weekend",
+    'img': 'img/s.png',
+    'date': 'November 22, 2013',
+    'description': 'Startup Weekend is a global grassroots movement of active and empowered entrepreneurs who are learning the basics of founding startups and launching successful ventures.'
+  });
+
+  var a = Templates.eventBox({
+    'title': "AngelHack",
+    'img': 'img/a.png',
+    'date': 'November 30, 2013',
+    'description': 'AngelHack is a premier developer marketing agency, which offers comprehensive marketing programs to enhance existing corporate initiatives around developer relations, developer marketing, startup outreach, and the creation of developer ecosystems. '
+  });
+
   EventsLayoutView.$el.find('.featured-events')
     .append(devWeek)
+    .append(startup)
+    .append(a)
     .on('click', '.box', function() {
       window.open('http://la.developerweek.com/');
     });
