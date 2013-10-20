@@ -6,7 +6,8 @@ define([
     routes: {
       'projects': 'projects',
       'project/*id': 'project',
-      'login': 'login'
+      'login': 'login',
+      'profiles': 'profiles'
     },
 
     projects: function() {
@@ -19,6 +20,10 @@ define([
 
     project: function(id) { 
       
+    },
+
+    profiles: function() {
+      AppState.set('activeView', AppState.get('views').get('profilesLayout'));
     }
   }); 
  

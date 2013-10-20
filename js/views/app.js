@@ -12,9 +12,9 @@ define([
 		change: function() {
       for (var view in this.views.attributes) {
         if (this.views.get(view) !== AppState.get('activeView')) {
-          this.views.get(view).$el.fadeOut(300);
+          this.views.get(view).$el.fadeOut(500);
           } else {
-          this.views.get(view).$el.fadeIn(300);
+          this.views.get(view).$el.fadeIn(500);
         }
       }
     }

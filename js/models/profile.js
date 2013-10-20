@@ -2,7 +2,7 @@ define([
 	'backbone'
 ], function(Backbone) {
 	'use strict';
-	var ProjectModel = Backbone.Model.extend({
+	var ProfileModel = Backbone.Model.extend({
 		defaults: {
       title: "Default",
       team: "team",
@@ -23,5 +23,5 @@ define([
     }
 	});
 
-	return ProjectModel;
+	return ProfileModel;
 });

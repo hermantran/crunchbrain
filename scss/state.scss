@@ -1,3 +1,7 @@
 .shadow {
   @include shadow(#888);
 }
+
+.text-bold {
+  font-weight: bold;
+}

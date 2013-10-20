@@ -26,16 +26,16 @@ require([
   'views/app',
   'views/projectsLayout',
   'views/projectLayout',
-  'views/loginLayout'
-], function($, Backbone, AppState, Router, AppView, ProjectsLayoutView, ProjectLayoutView, LoginLayoutView) {
+  'views/loginLayout',
+  'views/profilesLayout'
+], function($, Backbone, AppState, Router, AppView, ProjectsLayoutView, ProjectLayoutView, LoginLayoutView, ProfilesLayoutView) {
   'use strict';
   var client = new WindowsAzure.MobileServiceClient(
       "https://hackathondata.azure-mobile.net/",
       "QnBfSOSWkwCVrZwuRCKGqAMXUzuFOb51"
   );
 
-  var projects = client.getTable("project").read().done(function(results){
-    console.log(results);
+  var projects = client.getTable("project").read().done(function(results) {
     for (var i = 0; i < results.length; i++) {
       if (results[i].featured) {
         AppState.get('collections').get('featuredProjects').add(results[i]);
@@ -43,8 +43,14 @@ require([
         AppState.get('collections').get('recentProjects').add(results[i]);
       }
     }
-  }, function(err){
+  }, function(err) {
     console.log("error: " + err);
+  });
+
+  var profiles = client.getTable("user").read().done(function(results) {
+    console.log(results);
+  }, function(err) {
+
   });
 
 
@@ -56,12 +62,13 @@ require([
   views.set('projectsLayout', ProjectsLayoutView);
   views.set('projectLayout', ProjectLayoutView);
   views.set('loginLayout', LoginLayoutView);
+  views.set('profilesLayout', ProfilesLayoutView);
 
   $content
     .append(ProjectsLayoutView.el)
     .append(ProjectLayoutView.el)
-    .append(LoginLayoutView.el);
-
+    .append(LoginLayoutView.el)
+    .append(ProfilesLayoutView.el);
 
   AppState.set('activeView', ProjectsLayoutView);
 /*

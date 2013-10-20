@@ -4,14 +4,25 @@ define([
   var Templates = {};
 
   Templates.projects = [
-      '<div class="row text-center content-bar">',
-        '<a href="#">Featured Projects</a>',
-        '<a href="#">Recent Projects</a>',
-      '</div>',
-      '<h4 class="text-center">Featured Projects</h4>',
-      '<div class="row text-center featured-projects"></div>',
-      '<h4 class="text-center">Recent Projects</h4>',
-      '<div class="row text-center recent-projects"></div>',
+    '<div class="row text-center content-bar">',
+      '<a href="#" class="text-bold">Featured Projects</a>',
+      '<a href="#" class="text-bold">Recent Projects</a>',
+    '</div>',
+    '<h4 class="text-center">Featured Projects</h4>',
+    '<div class="row text-center featured-projects"></div>',
+    '<h4 class="text-center">Recent Projects</h4>',
+    '<div class="row text-center recent-projects"></div>',
+  ];
+
+  Templates.profiles = [
+    '<div class="row text-center content-bar">',
+      '<a href="#" class="text-bold">Featured Profiles</a>',
+      '<a href="#" class="text-bold">Recent Profiles</a>',
+    '</div>',
+    '<h4 class="text-center">Featured Profiles</h4>',
+    '<div class="row text-center featured-profiles"></div>',
+    '<h4 class="text-center">Recent Profiles</h4>',
+    '<div class="row text-center recent-profiles"></div>',
   ];
 
   Templates.project = [
@@ -56,6 +67,16 @@ define([
   ];
 
   Templates.box = [
+    '<div class="box shadow">',
+      '<img src="<%= img %>" width="100%">',
+      '<b><%= title %></b>',
+      '<br>Project needs: <b>Developers, Designers</b>',
+      '<p><%= description %></p>',
+      '<p>Project by: <%= team %> </p>',
+    '</div>'
+  ];
+
+  Templates.profileBox = [
     '<div class="box shadow">',
       '<img src="<%= img %>" width="100%">',
       '<b><%= title %></b>',

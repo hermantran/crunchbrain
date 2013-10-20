@@ -1,4 +1,4 @@
-$nav-height: 40px;
+$nav-height: 50px;
 
 .nav-wrapper {
   border-bottom: 1px solid #ddd;
@@ -20,13 +20,21 @@ $nav-height: 40px;
   }
   
   a {
-    margin-left: 10px;
+    margin-left: 20px;
   }
   
   .question {
+    margin: 7px 0 0 5px;
     line-height: 17px;
     font-size: 15px;
   }
+}
+
+.navbar.subnav {
+  min-height: 45px;
+  max-height: 45px;
+  height: 45px;
+  line-height: 45px;
 }
 
 .content-bar {
