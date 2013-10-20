@@ -14,9 +14,18 @@ define([
     },
 
     render: function() {
-      var self = this;
+      var self = this,
+          recentProfilesCollection = new ProfilesCollection();
 
       this.$el.html(this.template());
+
+      AppState.get('collections').set('recentProfiles', recentProfilesCollection);
+
+      this.recentProfiles = new ListView({
+        el: this.$el.find('.recent-profiles'),
+        subView: 'views/profile',
+        collection: AppState.get('collections').get('recentProfiles')
+      });
     }
 
   });

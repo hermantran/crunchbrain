@@ -4,21 +4,26 @@ define([
 	'use strict';
 	var ProfileModel = Backbone.Model.extend({
 		defaults: {
-      title: "Default",
-      team: "team",
-      description: "Some description",
-      pitch: '',
-      status: '',
-      technology: '',
-      current_status: '',
-      next: '',
-      goal: '',
-      img: (function() { return "http://lorempixel.com/g/640/480/city/" + Math.floor(Math.random() * 10); })()
+      name: "John Doe",
+      awards: '',
+      education: '',
+      experience: '',
+      groups: '',
+      img: 'http://lorempixel.com/g/640/480/sports/',
+      interests: '',
+      location: '',
+      position: '',
+      project_img: '',
+      skills: '',
+      bio: 'I am a developer based out of Los Angeles, CA. I\'m always looking for new startup opprtunities and hackathons, especially in the tech sector.' 
     },
 
     initialize: function() {
      if (this.get('img') === null) {
       this.set('img', 'http://lorempixel.com/g/640/480/city/');
+     }
+     else if (this.get('bio') === null) {
+      this.set('bio', 'I am a developer based out of Los Angeles, CA. I\'m always looking for new startup opprtunities and hackathons, especially in the tech sector.');
      }
     }
 	});

@@ -1,7 +1,8 @@
 define([
 	"backbone",
-	"models/project"
-], function(Backbone, ProjectModel) {
+	"models/project",
+	"models/profile"
+], function(Backbone, ProjectModel, ProfileModel) {
 	'use strict';
 	var Container = Backbone.Model.extend();
 
@@ -9,7 +10,8 @@ define([
 		defaults: {
 			collections: new Container(),
 			views: new Container(),
-			activeProject: new ProjectModel()
+			activeProject: new ProjectModel(),
+			activeProfile: new ProfileModel()
 		}
 	});
 

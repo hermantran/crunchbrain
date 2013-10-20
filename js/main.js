@@ -23,12 +23,15 @@ require([
   'backbone',
   'state',
   'router',
+  'templates',
   'views/app',
   'views/projectsLayout',
   'views/projectLayout',
   'views/loginLayout',
-  'views/profilesLayout'
-], function($, Backbone, AppState, Router, AppView, ProjectsLayoutView, ProjectLayoutView, LoginLayoutView, ProfilesLayoutView) {
+  'views/profilesLayout',
+  'views/profileLayout',
+  'views/eventsLayout'
+], function($, Backbone, AppState, Router, Templates, AppView, ProjectsLayoutView, ProjectLayoutView, LoginLayoutView, ProfilesLayoutView, ProfileLayoutView, EventsLayoutView) {
   'use strict';
   var client = new WindowsAzure.MobileServiceClient(
       "https://hackathondata.azure-mobile.net/",
@@ -47,14 +50,12 @@ require([
     console.log("error: " + err);
   });
 
-  var profiles = client.getTable("user").read().done(function(results) {
-    console.log(results);
+  var profiles = client.getTable("team").read().done(function(results) {
+     AppState.get('collections').get('recentProfiles').add(results);
+     console.log(results);
   }, function(err) {
 
   });
-
-
-  Backbone.history.start();
 
   var $content = $('#content'),
       views = AppState.get('views');
@@ -63,28 +64,31 @@ require([
   views.set('projectLayout', ProjectLayoutView);
   views.set('loginLayout', LoginLayoutView);
   views.set('profilesLayout', ProfilesLayoutView);
+  views.set('profileLayout', ProfileLayoutView);
+  views.set('eventsLayout', EventsLayoutView);
 
   $content
     .append(ProjectsLayoutView.el)
     .append(ProjectLayoutView.el)
     .append(LoginLayoutView.el)
-    .append(ProfilesLayoutView.el);
+    .append(ProfilesLayoutView.el)
+    .append(ProfileLayoutView.el)
+    .append(EventsLayoutView.el);
+
+  var devWeek = Templates.eventBox({
+    'title': "Developer Week LA",
+    'img': 'img/dev.png',
+    'date': 'October 18-21, 2013',
+    'description': 'Developer Week LA invites 400+ developers to converge on SantaMonica for a 2-day hackathon, full-day developer conference and a week-long series of events.'
+  });
+
+  EventsLayoutView.$el.find('.featured-events')
+    .append(devWeek)
+    .on('click', '.box', function() {
+      window.open('http://la.developerweek.com/');
+    });
+
 
   AppState.set('activeView', ProjectsLayoutView);
-/*
-  AppState.get('collections').get('recentProjects').add([
-    { title: 'hello', description: 'lorem ipsum' },
-    { title: 'hello2', description: 'lorem ipsum' },
-    { title: 'hello3', description: 'lorem ipsum' },
-    { title: 'another', description: 'lorem ipsum' },
-    { title: 'project', description: 'lorem ipsum' }
-  ]);
-
-  AppState.get('collections').get('featuredProjects').add([
-    { title: 'some', description: 'lorem ipsum' },
-    { title: 'featured', description: 'lorem ipsum' },
-    { title: 'project', description: 'lorem ipsum' }
-  ]);
-*/
+  Backbone.history.start();
 });
-
