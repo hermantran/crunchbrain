@@ -1,5 +1,5 @@
 define([
-  "underscore"
+  'underscore'
 ], function(_) {
   var Templates = {};
 

@@ -1,11 +1,11 @@
 define([
-	"backbone",
-  "state",
-  "router",
-	"templates"
+  'backbone',
+  'state',
+  'router',
+  'templates'
 ], function(Backbone, AppState, Router, Templates) {
-	'use strict';
-	var projectView = Backbone.View.extend({
+  'use strict';
+  var projectView = Backbone.View.extend({
     tagName: 'div',
     className: 'col-lg-4 box-wrapper',
     template: Templates.box,
@@ -26,7 +26,7 @@ define([
       this.$el.html(this.template(this.model.toJSON()));
     }
 
-	});
+  });
 
-	return projectView;
+  return projectView;
 });

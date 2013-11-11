@@ -1,11 +1,11 @@
 define([
-  "backbone",
-  "templates",
-  "state",
+  'backbone',
+  'templates',
+  'state',
 ], function(Backbone, Templates, AppState) {
   var LoginLayoutView = Backbone.View.extend({
-    tagName: "div",
-    className: "row",
+    tagName: 'div',
+    className: 'row',
     template: Templates.login,
 
     initialize: function() {

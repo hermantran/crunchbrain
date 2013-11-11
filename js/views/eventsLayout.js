@@ -1,8 +1,8 @@
 define([
-  "backbone",
-  "templates",
-  "state",
-  "views/list"
+  'backbone',
+  'templates',
+  'state',
+  'views/list'
 ], function(Backbone, Templates, AppState, ListView) {
   var EventsLayoutView = Backbone.View.extend({
     tagName: "div",

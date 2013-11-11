@@ -1,8 +1,9 @@
 require.config({
+  baseUrl: 'js/',
   paths: {
-    jquery: '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min',
-    backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min',
-    underscore: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min'
+    jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min', 'libs/jquery.min'],
+    backbone: ['//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min', 'libs/backbone-min'],
+    underscore: ['//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min', 'libs/underscore-min']
   },
   
   shim: {
@@ -15,7 +16,7 @@ require.config({
     }
   },
 
-  urlArgs: "bust=" + (new Date()).getTime()
+  // urlArgs: "bust=" + (new Date()).getTime()
 });
 
 require([
@@ -35,8 +36,8 @@ require([
 ], function($, Backbone, AppState, Router, Templates, AppView, ProjectsLayoutView, ProjectLayoutView, LoginLayoutView, ProfilesLayoutView, ProfileLayoutView, EventsLayoutView, SignupLayoutView) {
   'use strict';
   var client = new WindowsAzure.MobileServiceClient(
-      "https://hackathondata.azure-mobile.net/",
-      "QnBfSOSWkwCVrZwuRCKGqAMXUzuFOb51"
+      'https://hackathondata.azure-mobile.net/',
+      'QnBfSOSWkwCVrZwuRCKGqAMXUzuFOb51'
   );
 
   var projects = client.getTable("project").read().done(function(results) {
@@ -48,10 +49,10 @@ require([
       }
     }
   }, function(err) {
-    console.log("error: " + err);
+    console.log('error: ' + err);
   });
 
-  var profiles = client.getTable("team").read().done(function(results) {
+  var profiles = client.getTable('team').read().done(function(results) {
      AppState.get('collections').get('recentProfiles').add(results);
      console.log(results);
   }, function(err) {
@@ -106,7 +107,6 @@ require([
     .on('click', '.box', function() {
       window.open('http://la.developerweek.com/');
     });
-
 
   AppState.set('activeView', ProjectsLayoutView);
   Backbone.history.start();

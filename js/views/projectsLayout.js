@@ -1,12 +1,12 @@
 define([
-  "backbone",
-  "templates",
-  "state",
-  "collections/projects",
-  "views/list"
+  'backbone',
+  'templates',
+  'state',
+  'collections/projects',
+  'views/list'
 ], function(Backbone, Templates, AppState, ProjectsCollection, ListView) {
   var ProjectsLayoutView = Backbone.View.extend({
-    tagName: "div",
+    tagName: 'div',
     template: Templates.projects,
 
     initialize: function() {

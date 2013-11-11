@@ -4,7 +4,7 @@ define([
 	'use strict';
 	var ProfileModel = Backbone.Model.extend({
 		defaults: {
-      name: "John Doe",
+      name: 'John Doe',
       awards: '',
       education: '',
       experience: '',

@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     jshint: {
-      files: ['js/**/*.js', '!js/main.min.js', '!js/libs/**/*']
+      files: ['js/**/*.js', '!**/*.min.js', '!js/libs/**/*.js']
     },
     sass: {
       dist: {
@@ -19,8 +19,15 @@ module.exports = function(grunt) {
         options: {
           name: "main",
           baseUrl: "js/",
+          paths: {
+            jquery: 'empty:',
+            backbone: 'empty:',
+            underscore: 'empty:',
+            requireLib: 'libs/require.min'
+          },
           mainConfigFile: "js/main.js",
-          out: "js/main.min.js"
+          include: ['requireLib'],
+          out: "js/dist/main.min.js"
         }
       }
     },

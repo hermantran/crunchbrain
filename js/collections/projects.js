@@ -1,10 +1,10 @@
 define([
-	"backbone",
-	"models/project"
+  'backbone',
+  'models/project'
 ], function(Backbone, ProjectModel) {
-	var ProjectsCollection = Backbone.Collection.extend({
-		model: ProjectModel
-	});
+  var ProjectsCollection = Backbone.Collection.extend({
+    model: ProjectModel
+  });
 
-	return ProjectsCollection;
+  return ProjectsCollection;
 });

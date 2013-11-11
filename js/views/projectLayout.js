@@ -1,15 +1,15 @@
 define([
-  "backbone",
-  "templates",
-  "state",
+  'backbone',
+  'templates',
+  'state',
 ], function(Backbone, Templates, AppState) {
   var client = new WindowsAzure.MobileServiceClient(
-      "https://hackathondata.azure-mobile.net/",
-      "QnBfSOSWkwCVrZwuRCKGqAMXUzuFOb51"
+      'https://hackathondata.azure-mobile.net/',
+      'QnBfSOSWkwCVrZwuRCKGqAMXUzuFOb51'
     );
 
   var ProjectLayoutView = Backbone.View.extend({
-    tagName: "div",
+    tagName: 'div',
     template: Templates.project,
 
     initialize: function() {

@@ -1,7 +1,7 @@
 define([
-  "backbone",
-  "templates",
-  "state",
+  'backbone',
+  'templates',
+  'state',
 ], function(Backbone, Templates, AppState) {
   var ProfileLayoutView = Backbone.View.extend({
     tagName: "div",

@@ -1,8 +1,8 @@
 define([
-	"backbone",
-  "state",
-  "router",
-	"templates"
+	'backbone',
+  'state',
+  'router',
+	'templates'
 ], function(Backbone, AppState, Router, Templates) {
 	'use strict';
 	var profileView = Backbone.View.extend({
@@ -16,7 +16,7 @@ define([
       this.$el.on('click', '.box', function() {
         AppState.set('activeProfile', self.model);
         AppState.set('activeView', AppState.get('views').get('profileLayout'));
-        Router.navigate("profile/" + self.model.get('name'));
+        Router.navigate('profile/' + self.model.get('name'));
       });
     },
 
