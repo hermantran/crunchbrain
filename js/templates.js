@@ -110,8 +110,8 @@ define([
       '</div>',
       '<div class="col-lg-4">',
         '<b>Bio</b>',
-        '<div class="project-box">',
-          '<p><%= bio %>',
+        '<div class="project-box bio">',
+          '<p><%= bio %></p>',
         '</div>',
         '<b>Experience</b>',
         '<div class="project-box">',
@@ -145,8 +145,8 @@ define([
     '<div class="box shadow">',
       '<img src="<%= img %>" width="100%">',
       '<b><%= title %></b>',
-      '<br>Project needs: <b>Developers, Designers</b>',
-      '<p><%= description %></p>',
+      '<br><%= description %>',
+      '<p>Project needs: <b>Developers, Designers</b></p>',     
       '<p>Project by: <%= team %> </p>',
     '</div>'
   ];

@@ -5,6 +5,10 @@ $nav-height: 50px;
   background: white;
 }
 
+.nav {
+  border-top: 4px solid rgb(67, 137, 200);
+}
+
 .navbar {
   height: $nav-height;
   line-height: $nav-height;
