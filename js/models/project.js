@@ -1,9 +1,9 @@
 define([
-	'backbone'
+  'backbone'
 ], function(Backbone) {
-	'use strict';
-	var ProjectModel = Backbone.Model.extend({
-		defaults: {
+  'use strict';
+  var ProjectModel = Backbone.Model.extend({
+    defaults: {
       title: 'Default',
       team: 'team',
       description: 'Some description',
@@ -21,7 +21,7 @@ define([
       this.set('img', 'http://lorempixel.com/g/640/480/city/');
      }
     }
-	});
+  });
 
-	return ProjectModel;
+  return ProjectModel;
 });

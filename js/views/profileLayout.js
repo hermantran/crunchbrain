@@ -3,11 +3,6 @@ define([
   'templates',
   'state',
 ], function(Backbone, Templates, AppState) {
-  var client = new WindowsAzure.MobileServiceClient(
-      "https://hackathondata.azure-mobile.net/",
-      "QnBfSOSWkwCVrZwuRCKGqAMXUzuFOb51"
-    );
-  
   var ProfileLayoutView = Backbone.View.extend({
     tagName: "div",
     template: Templates.profile,
@@ -25,10 +20,6 @@ define([
           console.log('key');
           if (e.keyCode === 13) {
             AppState.get('activeProfile').set('bio', $(this).val());
-            client.getTable("team").update({
-              id: parseInt(AppState.get('activeProfile').id, 10),
-              bio: $(this).val()
-            });
             $(this).parent().removeClass('edit is-clickable').html('<p>' + AppState.get('activeProfile').get('bio') + '</p>');
           }
         })

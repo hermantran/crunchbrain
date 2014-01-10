@@ -35,29 +35,30 @@ require([
   'views/signupLayout'
 ], function($, Backbone, AppState, Router, Templates, AppView, ProjectsLayoutView, ProjectLayoutView, LoginLayoutView, ProfilesLayoutView, ProfileLayoutView, EventsLayoutView, SignupLayoutView) {
   'use strict';
-  var client = new WindowsAzure.MobileServiceClient(
-      'https://hackathondata.azure-mobile.net/',
-      'QnBfSOSWkwCVrZwuRCKGqAMXUzuFOb51'
-  );
+  Parse.initialize("icwRmnkVdAO6TZ1hxrL0CYSWhbHKWwsEjSunZO4e", "GmJWDRSthdUuzY1AZg948geBBBRCbRDzHQDsCOuV");
 
-  var projects = client.getTable("project").read().done(function(results) {
-    for (var i = 0; i < results.length; i++) {
-      if (results[i].featured) {
-        AppState.get('collections').get('featuredProjects').add(results[i]);
-      } else {
-        AppState.get('collections').get('recentProjects').add(results[i]);
+   var Project = Parse.Object.extend('project'),
+      Team = Parse.Object.extend('profile'),
+      query = new Parse.Query(Project),
+      teamQ = new Parse.Query(Team);
+
+  query
+    .find()
+    .then(function(results) {
+      for (var i = 0; i < results.length; i++) {
+        if (results[i].attributes.featured) {
+          AppState.get('collections').get('featuredProjects').add(results[i].attributes);
+        } else {
+          AppState.get('collections').get('recentProjects').add(results[i].attributes);
+        }
       }
-    }
-  }, function(err) {
-    console.log('error: ' + err);
-  });
+    });
 
-  var profiles = client.getTable('team').read().done(function(results) {
-     AppState.get('collections').get('recentProfiles').add(results);
-     console.log(results);
-  }, function(err) {
-
-  });
+ teamQ
+    .find()
+    .then(function(results) {
+      AppState.get('collections').get('recentProfiles').add(results[0].attributes);
+    });
 
   var $content = $('#content'),
       views = AppState.get('views');
@@ -105,7 +106,18 @@ require([
     .append(startup)
     .append(a)
     .on('click', '.box', function() {
-      window.open('http://la.developerweek.com/');
+      var index = $('.box').index(this),
+          url;
+      if (index === 1) {
+        url = 'http://la.developerweek.com/';
+      }
+      else if (index === 2) {
+        url = 'http://startupweekend.org/';
+      }
+      else {
+        url = 'http://angelhack.com/';
+      }
+      window.open(url);
     });
 
   AppState.set('activeView', ProjectsLayoutView);

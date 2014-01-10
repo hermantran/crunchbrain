@@ -1,9 +1,9 @@
 define([
-	'backbone'
+  'backbone'
 ], function(Backbone) {
-	'use strict';
-	var ProfileModel = Backbone.Model.extend({
-		defaults: {
+  'use strict';
+  var ProfileModel = Backbone.Model.extend({
+    defaults: {
       name: 'John Doe',
       awards: '',
       education: '',
@@ -26,7 +26,7 @@ define([
       this.set('bio', 'I am a developer based out of Los Angeles, CA. I\'m always looking for new startup opprtunities and hackathons, especially in the tech sector.');
      }
     }
-	});
+  });
 
-	return ProfileModel;
+  return ProfileModel;
 });

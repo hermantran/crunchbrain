@@ -3,11 +3,6 @@ define([
   'templates',
   'state',
 ], function(Backbone, Templates, AppState) {
-  var client = new WindowsAzure.MobileServiceClient(
-      'https://hackathondata.azure-mobile.net/',
-      'QnBfSOSWkwCVrZwuRCKGqAMXUzuFOb51'
-    );
-
   var ProjectLayoutView = Backbone.View.extend({
     tagName: 'div',
     template: Templates.project,
@@ -24,10 +19,6 @@ define([
         .on('keydown', '.input-title', function(e) {
           if (e.keyCode === 13) {
             AppState.get('activeProject').set('title', $(this).val());
-            client.getTable("project").update({
-              id: parseInt(AppState.get('activeProject').id, 10),
-              title: $(this).val()
-            });
             $(this).parent().removeClass('edit is-clickable').html(AppState.get('activeProject').get('title'));
           }
         })
@@ -40,10 +31,6 @@ define([
           if (e.keyCode === 13) {
             e.preventDefault();
             AppState.get('activeProject').set('pitch', $(this).val());
-            client.getTable("project").update({
-              id: parseInt(AppState.get('activeProject').id, 10),
-              pitch: $(this).val()
-            });
             $(this).parent().removeClass('edit is-clickable').html(AppState.get('activeProject').get('pitch'));
           }
         });
