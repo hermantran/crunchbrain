@@ -1,11 +1,11 @@
 define([
-	'backbone',
+  'backbone',
   'state',
   'router',
-	'templates'
+  'templates'
 ], function(Backbone, AppState, Router, Templates) {
-	'use strict';
-	var profileView = Backbone.View.extend({
+  'use strict';
+  var profileView = Backbone.View.extend({
     tagName: 'div',
     className: 'col-lg-4 box-wrapper',
     template: Templates.profileBox,
@@ -24,7 +24,7 @@ define([
       this.$el.html(this.template(this.model.toJSON()));
     }
 
-	});
+  });
 
-	return profileView;
+  return profileView;
 });

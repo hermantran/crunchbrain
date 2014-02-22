@@ -7,4 +7,4 @@ CrunchBrain is a CrunchBase for hackathons; it provides a database of hackathon 
 * Uses Backbone and RequireJS for code modularity and separation
 * Uses Sass for CSS separation and compilation
 * Uses Backbone's Router for navigational changes 
-* Integrates Windows Azure Mobile Services as an asynchronous datastore
+* Integrates Parse as an asynchronous datastore
